@@ -167,6 +167,6 @@ These Use Cases lay the groundwork for a fully playable game. Future extensions 
 
 <div align="center">
 
-*Made with ☕ Java and 💡 logic — one Use Case at a time.*
+*Made with ☕ Java and 💡 logic - one Use Case at a time.*
 
 </div>
