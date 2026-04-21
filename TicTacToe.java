@@ -63,18 +63,12 @@ public class TicTacToe {
     }
 
     /**
-     * Checks if the given row and column are within bounds
-     * and if the target cell is empty.
-     * Input  : Row, Column
-     * Output : true if valid, false otherwise.
+     * Updates the board by placing the given symbol at
+     * the specified row and column.
+     * Input  : Row, Column, Symbol
+     * Hint   : Assume the move is already validated.
      */
-    static boolean isValidMove(int row, int col) {
-        if (row < 0 || row > 2 || col < 0 || col > 2) {
-            return false;
-        }
-        if (board[row][col] != '-') {
-            return false;
-        }
-        return true;
+    static void placeMove(int row, int col, char symbol) {
+        board[row][col] = symbol;
     }
 }
