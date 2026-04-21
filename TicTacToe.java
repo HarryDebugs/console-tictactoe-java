@@ -1,19 +1,65 @@
+import java.util.Random;
+
 /**
  * TicTacToe
- * UC6 places a player's symbol on the board at the given position.
- * This use case focuses on updating game state.
+ * UC7 generates random slot values until a valid move is found,
+ * then places the computer symbol on the board.
  */
 public class TicTacToe {
 
-    static char[][] board = new char[3][3];
+    static char[][] board = {
+        {'-', '-', '-'},
+        {'-', '-', '-'},
+        {'-', '-', '-'}
+    };
+
+    static char computerSymbol = 'O';
 
     /**
-     * Entry point of the program. Places a sample move
-     * and prints the updated cell value.
+     * Entry point of the program. Triggers the computer move.
      */
     public static void main(String[] args) {
-        placeMove(0, 0, 'X');
-        System.out.println(board[0][0]);
+        computerMove();
+    }
+
+    /**
+     * Generates random slot values until a valid move is found,
+     * then places the computer symbol on the board.
+     */
+    static void computerMove() {
+        Random random = new Random();
+        int slot, row, col;
+
+        // Keep generating a random slot until a valid one is found
+        do {
+            slot = random.nextInt(9) + 1;   // generates 1 to 9
+            row  = getRowFromSlot(slot);
+            col  = getColFromSlot(slot);
+        } while (!isValidMove(row, col));
+
+        // Place the computer's symbol on the validated cell
+        board[row][col] = computerSymbol;
+
+        System.out.println("Computer chose slot: " + slot);
+        System.out.println("Placed at -> Row: " + row + ", Col: " + col);
+    }
+
+    /**
+     * Converts slot number into row index using zero-based indexing.
+     * Input  : Slot number (1-9)
+     * Output : Row index (0-2)
+     */
+    static int getRowFromSlot(int slot) {
+        return (slot - 1) / 3;
+    }
+
+    /**
+     * Converts slot number into column index using modulo operation.
+     * Input  : Slot number (1-9)
+     * Output : Column index (0-2)
+     */
+    static int getColFromSlot(int slot) {
+        return (slot - 1) % 3;
     }
 
     /**
